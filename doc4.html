@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Formulário - Inclusão Digital</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="doc4">
+  <div class="container">
+    <header>
+      <div class="brand">Formulário</div>
+      <nav class="nav">
+        <a href="index.html">Menu</a>
+        <a href="doc1.html">O que é</a>
+        <a href="doc2.html">Objetivos</a>
+        <a href="doc3.html">Pilares</a>
+        <a href="doc5.html">Somar</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Formulário</h1>
+      <p class="lead">Preencha os dados abaixo.</p>
+
+      <form id="survey" class="card" onsubmit="event.preventDefault(); handleSubmit();">
+        <div class="form-grid">
+          <div class="span-2">
+            <label>Nome Completo:
+              <input class="input" type="text" id="nome" required placeholder="Seu nome completo">
+            </label>
+          </div>
+
+          <div>
+            <label>Sexo:</label>
+            <div class="form-row">
+              <label><input type="radio" name="sexo" value="Masculino" checked> Masculino</label>
+              <label><input type="radio" name="sexo" value="Feminino"> Feminino</label>
+            </div>
+          </div>
+
+          <div>
+            <label>Conhecimento em Informática:</label>
+            <select id="nivel" class="input">
+              <option>Nenhum</option>
+              <option>Básico</option>
+              <option>Intermediário</option>
+              <option>Avançado</option>
+            </select>
+          </div>
+
+          <div class="span-2">
+            <label>Aplicativos conhecidos:</label>
+            <div class="form-row">
+              <label><input type="checkbox" name="apps" value="Word"> Word</label>
+              <label><input type="checkbox" name="apps" value="Excel"> Excel</label>
+              <label><input type="checkbox" name="apps" value="PowerPoint"> Power Point</label>
+              <label><input type="checkbox" name="apps" value="Windows"> Windows</label>
+            </div>
+          </div>
+
+          <div>
+            <label>Residência (escolha uma opção):</label>
+            <select id="residencia" class="input">
+              <option>Águas Claras</option>
+              <option>Ceilândia</option>
+              <option>Guará</option>
+              <option>Taguatinga</option>
+            </select>
+          </div>
+
+          <div class="span-2">
+            <label>Sugestões:
+              <textarea id="sugestoes" placeholder="Deixe suas sugestões..."></textarea>
+            </label>
+          </div>
+
+          <div class="span-2 form-row">
+            <button class="btn btn-primary" type="submit">Enviar</button>
+            <button class="btn btn-secondary" type="reset">Limpar</button>
+          </div>
+
+          <div id="result" class="span-2"></div>
+        </div>
+      </form>
+
+      <script>
+        function handleSubmit(){
+          const nome = document.getElementById('nome').value.trim();
+          const nivel = document.getElementById('nivel').value;
+          const residencia = document.getElementById('residencia').value;
+          const apps = Array.from(document.querySelectorAll('input[name="apps"]:checked')).map(i=>i.value);
+          const sexo = document.querySelector('input[name="sexo"]:checked').value;
+          const sugestoes = document.getElementById('sugestoes').value.trim();
+
+          const resumo = `
+            <h3>Resumo dos dados</h3>
+            <p><strong>Nome:</strong> ${nome || '(não informado)'}</p>
+            <p><strong>Sexo:</strong> ${sexo}</p>
+            <p><strong>Nível em Informática:</strong> ${nivel}</p>
+            <p><strong>Aplicativos:</strong> ${apps.length ? apps.join(', ') : 'Nenhum'}</p>
+            <p><strong>Residência:</strong> ${residencia}</p>
+            <p><strong>Sugestões:</strong> ${sugestoes || '(nenhuma)'}</p>
+          `;
+
+          document.getElementById('result').innerHTML = resumo;
+        }
+      </script>
+    </main>
+
+    <footer>
+      Voltar ao <a href="index.html">Menu Principal</a>
+    </footer>
+  </div>
+</body>
+</html>

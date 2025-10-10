@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Programa para Somar Dois Números</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="doc5">
+  <div class="container">
+    <header>
+      <h1>Programa para Somar Dois Números</h1>
+      <nav class="nav">
+        <a href="index.html">Menu Principal</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Calculadora</h2>
+        <p>Digite dois números e veja o resultado da soma:</p>
+
+        <label>Número 1:</label>
+        <input type="number" id="n1" class="input" placeholder="Digite o primeiro número">
+
+        <label>Número 2:</label>
+        <input type="number" id="n2" class="input" placeholder="Digite o segundo número">
+
+        <button class="btn btn-primary" onclick="somar()">Somar</button>
+
+        <label>Resultado da Soma:</label>
+        <input type="text" id="resultado" class="input" readonly>
+      </section>
+
+      <script>
+        function somar() {
+          const n1 = parseFloat(document.getElementById('n1').value) || 0;
+          const n2 = parseFloat(document.getElementById('n2').value) || 0;
+          const soma = n1 + n2;
+          document.getElementById('resultado').value = soma;
+        }
+      </script>
+
+         </main>
+
+    <footer>
+      <p>Voltar ao <a href="index.html">Menu Principal</a></p>
+    </footer>
+  </div>
+</body>
+</html>
