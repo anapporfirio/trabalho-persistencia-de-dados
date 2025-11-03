@@ -1,51 +1,48 @@
-<!doctype html>
-<html lang="pt-BR">
+<!-- <!DOCTYPE html> -->
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Programa para Somar Dois Números</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
-<body class="doc5">
-  <div class="container">
-    <header>
-      <h1>Programa para Somar Dois Números</h1>
-      <nav class="nav">
-        <a href="index.html">Menu Principal</a>
-      </nav>
-    </header>
 
-    <main>
-      <section class="card">
-        <h2>Calculadora</h2>
-        <p>Digite dois números e veja o resultado da soma:</p>
+<body>
+  <h1>Calculadora</h1>
 
-        <label>Número 1:</label>
-        <input type="number" id="n1" class="input" placeholder="Digite o primeiro número">
+  <form>
+    <label for="numero1">Número 1:</label>
+    <input type="number" id="num1" name="numero1" value="0">
 
-        <label>Número 2:</label>
-        <input type="number" id="n2" class="input" placeholder="Digite o segundo número">
+    <br />
 
-        <button class="btn btn-primary" onclick="somar()">Somar</button>
+    <label for="numero2">Número 2:</label>
+    <input type="number" id="num2" name="numero2" value="0">
 
-        <label>Resultado da Soma:</label>
-        <input type="text" id="resultado" class="input" readonly>
-      </section>
+    <br />
 
-      <script>
-        function somar() {
-          const n1 = parseFloat(document.getElementById('n1').value) || 0;
-          const n2 = parseFloat(document.getElementById('n2').value) || 0;
-          const soma = n1 + n2;
-          document.getElementById('resultado').value = soma;
-        }
-      </script>
+    <p>Resultado da Soma: <span id="resultado"> </span></p>
 
-         </main>
+    <br>
 
-    <footer>
-      <p>Voltar ao <a href="index.html">Menu Principal</a></p>
-    </footer>
-  </div>
+    <button onclick="somar()">Somar</button>
+  </form>
+
+
+  <script>
+    function somar(e) {
+      event.preventDefault();
+
+      const num1 = document.getElementById("num1").value;
+      const num2 = document.getElementById("num2").value;
+
+      const valor1 = parseFloat(num1);
+      const valor2 = parseFloat(num2);
+
+      const soma = valor1 + valor2;
+
+      document.getElementById("resultado").textContent = soma;
+
+    }
+  </script>
 </body>
 </html>
